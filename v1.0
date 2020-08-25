@@ -1,0 +1,232 @@
+#include <iostream>                                 [In this code there is a wheel problem in void vehicle() , showed by teacher niloy  &  mun]
+#include<GL/gl.h>                   
+#include <GL/glut.h>
+
+using namespace std;
+
+void myDisplay();
+
+GLfloat truckPosition = 0.0f;
+GLfloat truckSpeed = 0.05f;
+void updateTruck(int value)
+{
+    if(truckPosition > 1.5)
+        truckPosition = -1.2f;
+
+    truckPosition += truckSpeed;
+
+	glutPostRedisplay();
+
+
+	glutTimerFunc(100, updateTruck, 0);
+}
+
+GLfloat carPosition = 0.0f;
+GLfloat carSpeed = 0.05f;
+void updateCar(int value)
+{
+    if(carPosition < - 1.5)
+        carPosition = 1.2f;
+
+    carPosition -= carSpeed;
+
+	glutPostRedisplay();
+
+
+	glutTimerFunc(100, updateCar, 0);
+}
+
+
+void road1()
+{
+
+    glColor3ub(32,32,32);
+    glBegin(GL_POLYGON);
+    glVertex2f(-1.0f, -1.0f);
+    glVertex2f(-0.57f, -1.0f);
+    glVertex2f(-0.57f,-0.82);
+    glVertex2f(-1.0f,-0.82);
+    glEnd();
+
+    glColor3ub(255,255,255);
+   glLineWidth(5);
+   glBegin(GL_LINES);
+   glVertex2f(-0.98,-0.91);
+   glVertex2f(-0.92,-0.91);
+   glEnd();
+   glBegin(GL_LINES);
+   glVertex2f(-0.85,-0.91);
+   glVertex2f(-0.79,-0.91);
+   glEnd();
+   glBegin(GL_LINES);
+   glVertex2f(-0.73,-0.91);
+   glVertex2f(-0.67,-0.91);
+   glEnd();
+}
+void grass2()
+{
+    glColor3ub(34,139,34);
+    glBegin(GL_POLYGON);
+    glVertex2f(0.0f, 0.0f);
+    glColor3ub(50,205,50);
+    glVertex2f(-0.4f, -0.33f);
+    glColor3ub(28,230,0);
+    glVertex2f(-0.4f,-1.0);
+    glVertex2f(1.0f,-1.0);
+
+    glVertex2f(1.0f,0.05f);
+    glEnd();
+
+
+}
+
+void road2()
+{
+    glColor3ub(32,32,32);
+    glBegin(GL_POLYGON);
+    glVertex2f(1.0f, -1.0f);
+    glVertex2f(1.0f, -0.82f);
+    glVertex2f(-0.17f,-0.82f);
+    glVertex2f(-0.17f,-1.0f);
+    glEnd();
+
+    glColor3ub(255,255,255);
+   glLineWidth(5);
+   glBegin(GL_LINES);
+   glVertex2f(0.28,-0.91);
+   glVertex2f(0.34,-0.91);
+   glEnd();
+   glBegin(GL_LINES);
+   glVertex2f(0.4,-0.91);
+   glVertex2f(0.46,-0.91);
+   glEnd();
+   glBegin(GL_LINES);
+   glVertex2f(0.52,-0.91);
+   glVertex2f(0.58,-0.91);
+   glEnd();
+   glBegin(GL_LINES);
+   glVertex2f(0.64,-0.91);
+   glVertex2f(0.7,-0.91);
+   glEnd();
+   glBegin(GL_LINES);
+   glVertex2f(0.76,-0.91);
+   glVertex2f(0.82,-0.91);
+   glEnd();
+   glBegin(GL_LINES);
+   glVertex2f(0.88,-0.91);
+   glVertex2f(0.94,-0.91);
+   glEnd();
+   glBegin(GL_LINES);
+   glVertex2f(0.22,-0.91);
+   glVertex2f(0.16,-0.91);
+   glEnd();
+   glBegin(GL_LINES);
+   glVertex2f(0.1,-0.91);
+   glVertex2f(0.04,-0.91);
+   glEnd();
+   glBegin(GL_LINES);
+   glVertex2f(-0.02,-0.91);
+   glVertex2f(-0.08,-0.91);
+   glEnd();
+}
+
+
+void vehicle()//This is the truck
+{
+
+    glPushMatrix();
+    glTranslatef(truckPosition,0.0f, 0.0f);
+
+   //body
+    glColor3ub(0,255,255);
+    glBegin(GL_POLYGON);
+    glVertex2f(-0.9f,-0.86f);
+    glVertex2f(-0.68f, -0.86f);
+    glVertex2f(-0.68f,-0.67f);
+    glVertex2f(-0.9f,-0.67f);
+    glEnd();
+    //base of the truck
+    glColor3ub(0,0,0);
+    glBegin(GL_POLYGON);
+    glVertex2f(-0.9f,-0.86f);
+    glVertex2f(-0.58f, -0.86f);
+    glVertex2f(-0.58f,-0.9f);
+    glVertex2f(-0.9f,-0.9f);
+    glEnd();
+    //front
+    glColor3ub(240,0,0);
+    glBegin(GL_POLYGON);
+    glVertex2f(-0.67f,-0.86f);
+    glVertex2f(-0.58f, -0.86f);
+    glVertex2f(-0.58f,-0.79f);
+    glVertex2f(-0.61f,-0.735f);
+    glVertex2f(-0.67f,-0.735f);
+    glEnd();
+
+    //door
+    glColor3ub(0,0,0);
+    glLineWidth(5.0);
+    glBegin(GL_LINES);
+    glVertex2f(-.59619,-0.815);
+    glVertex2f(-0.61,-0.815);
+    glEnd();
+    //window
+    glColor3ub(153,206,250);
+    glBegin(GL_POLYGON);
+    glVertex2f(-0.66,-0.797);
+    glVertex2f(-0.596,-0.797);
+    glVertex2f(-0.596,-0.781);
+    glColor3ub(100,149,237);
+    glVertex2f(-0.615,-0.747);
+    glVertex2f(-0.66,-0.747);
+    glEnd();
+    glPopMatrix();
+
+}
+
+
+void myDisplay(void)
+{
+    glClear (GL_COLOR_BUFFER_BIT);
+
+
+road1();
+road2();
+
+vehicle();
+glFlush ();
+}
+
+
+
+
+void myKeyboard(unsigned char key, int x, int y)
+{
+    switch(key)
+    {
+
+        case 'a':
+            truckSpeed -= 0.03f;
+
+            break;
+
+        case 'd':
+            truckSpeed += 0.05f;
+    }
+
+}
+
+
+
+
+int main(int argc, char** argv)
+{
+    glutInit(&argc, argv);
+    glutInitWindowSize (1200, 680);
+    glutInitWindowPosition (50, 10);
+    glutCreateWindow ("");
+    glutDisplayFunc(myDisplay);
+    glutKeyboardFunc(myKeyboard);
+    glutTimerFunc(1000, updateTruck, 0);
+    glutMainLoop();
+}
