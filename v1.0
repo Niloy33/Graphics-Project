@@ -1,5 +1,5 @@
-#include <iostream>                                 [In this code there is a wheel problem in void vehicle() , showed by teacher niloy  &  mun]
-#include<GL/gl.h>                   
+#include <iostream>                                
+#include<GL/gl.h>                                   
 #include <GL/glut.h>
 
 using namespace std;
